@@ -463,9 +463,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                     codeOne = segments[0];
                     codeTwo = segments[1];
 
-
-                    Log.d("SHAN", "Code0=" + codeOne + "   Cpde1=" + codeTwo);
-                   // if (twoDigitCode.equals(codeOne + "-" + codeTwo)) {
+                    // if (twoDigitCode.equals(codeOne + "-" + codeTwo)) {
                     if (completeCode.equals(anomalies.get(j).getCode())) {
                         if (anomalies.get(j).getIsActive() == 1) {
                             if (anomalies.get(j).getCivilAnomaly() != null) {
