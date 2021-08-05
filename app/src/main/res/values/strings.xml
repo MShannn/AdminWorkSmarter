@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Work Smarter Point</string>
+    <string name="navigation_drawer_close">Drawer Closed</string>
+    <string name="navigation_drawer_open">Drawer Open</string>
+    <string name="google_maps_key">AIzaSyAL1PPWI2imzQDY_e5t70IcEqd3hRzpKnY</string>
+    <string name="title_activity_add_anomalies">AddAnomaliesActivity</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

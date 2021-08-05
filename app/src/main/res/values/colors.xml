@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#272A32</color>
+    <color name="textColor">#85DCE9</color>
+    <color name="colorPrimaryDark">#272A32</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="text_grey">#818181</color>
+    <color name="light_grey">#e6e6e6</color>
+    <color name="maroon">#8b2f97</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>olor>
+    <color name="red">#E61304</color>olor>
+    <color name="yellow">#FFEB3B</color>olor>
+
+    <color name="blue1">#0070C0</color>
+    <color name="transparent_blue">#BDD7EE</color>
+    <color name="blue2">#126DC6</color>
+    <color name="sky">#129FF9</color>
+    <color name="thora_dark">#272A32</color>
+    <color name="thora__new_dark">#33353D</color>
+    <color name="thora_km_dark">#C43A3A3C</color>
+    <color name="loader">#543A3A3C</color>
+    <color name="dark_black">#1F2128</color>
+
+
+<color name="list_mid">#272a33</color>
+<color name="list_corner">#23262d</color>
+<color name="list_bg_mid">#2f3239</color>
+
+
+</resources>
