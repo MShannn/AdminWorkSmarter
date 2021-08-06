@@ -39,6 +39,7 @@ public class CivilAnomalyFragment extends Fragment implements AnomalyFixedListne
     String check;
     RelativeLayout progress;
     ImageView img_noRecord;
+    boolean isBusRegistered = false;
     private boolean isRegistered = false;
 
     public CivilAnomalyFragment() {
@@ -68,7 +69,12 @@ public class CivilAnomalyFragment extends Fragment implements AnomalyFixedListne
         img_noRecord.setVisibility(View.GONE);
         progress.setVisibility(View.VISIBLE);
 
-        BusProvider.getInstance().register(this);
+        if (!isBusRegistered){
+            registerBus();
+        }else {
+
+        }
+
 
         Log.d("SHAN", "Bus registered");
         setDataInList();
@@ -138,12 +144,10 @@ public class CivilAnomalyFragment extends Fragment implements AnomalyFixedListne
     }
 
 
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();
-        BusProvider.getInstance().unregister(this);
+        unregisterBus();
         Log.d("SHAN", "Bus unregister");
     }
 
@@ -154,5 +158,17 @@ public class CivilAnomalyFragment extends Fragment implements AnomalyFixedListne
         setDataInList();
     }
 
+    protected void registerBus() {
+        if (!isBusRegistered) {
+            BusProvider.getInstance().register(this);
+            isBusRegistered = true;
+        }
+    }
 
+    protected void unregisterBus() {
+        if (isBusRegistered) {
+            BusProvider.getInstance().unregister(this);
+            isBusRegistered = false;
+        }
+    }
 }

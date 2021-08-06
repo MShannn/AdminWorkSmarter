@@ -1,5 +1,6 @@
 package com.jvidal.worksmarter.Adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -58,14 +59,16 @@ public class CivilElectricObservationsAdapter extends RecyclerView.Adapter<Civil
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         // holder.setIsRecyclable(false);
 
         holder.txt_code.setText(ContactList.get(position).getCode());
         if (civilOrElectric == 1) {
             holder.txt_anomaly.setText(ContactList.get(position).getCivilAnomaly());
-        } else {
+        } else if (civilOrElectric == 2) {
             holder.txt_anomaly.setText(ContactList.get(position).getElectricAnomaly());
+        }else if (civilOrElectric == 3) {
+            holder.txt_anomaly.setText(ContactList.get(position).getBillboard());
         }
 
 

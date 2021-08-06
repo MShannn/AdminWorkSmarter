@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.jvidal.worksmarter.Activities.AddAnomaliesActivity;
+import com.jvidal.worksmarter.Fragments.BillboardAnomalyFragment;
 import com.jvidal.worksmarter.Fragments.CivilAnomalyFragment;
 import com.jvidal.worksmarter.Fragments.ElectricAnomalyFragment;
 
@@ -32,7 +33,9 @@ public class AnomaliesTabLayoutAdapter extends FragmentPagerAdapter {
             case 1:
                 ElectricAnomalyFragment electricAnomalyFragment = new ElectricAnomalyFragment();
                 return electricAnomalyFragment;
-
+            case 2:
+                BillboardAnomalyFragment billboardAnomalyFragment = new BillboardAnomalyFragment();
+                return billboardAnomalyFragment;
             default:
                 return null;
         }

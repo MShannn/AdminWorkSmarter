@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_add_anomalies2.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/billboard_anomaly_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/content_fix_anomaly.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/electric_anomaly_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/wrok_list_row.xml" value="0.36666666666666664" />
       </map>
     </option>

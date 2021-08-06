@@ -328,6 +328,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
     public void showDataFromDatabase(boolean update) {
         circularProgressView.setVisibility(View.VISIBLE);
+        Log.d("SHAN","showDataFromDatabase");
         setAddpter(workListModels, update);
         // circularProgressView.setVisibility(View.GONE);
     }
@@ -360,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
             }
         } catch (NullPointerException e) {
             /* proper error handling should be here */
-            Log.d("SHAN", "exceptio bn" + e.getMessage());
+//            Log.d("SHAN", "exceptio bn" + e.getMessage());
         }
         return value;
     }
@@ -439,20 +440,24 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
     public void setAddpter(final ArrayList<WorkListModel> workListModels, boolean update) {
         circularProgressView.setVisibility(View.VISIBLE);
+        Log.d("SHAN","setAddpter");
+
 
         Backendless.Data.of(Anomalies.class).find(new AsyncCallback<List<Anomalies>>() {
             @Override
             public void handleResponse(List<Anomalies> response) {
 
-
+                //Log.d("SHAN","handleResponse="+response.);
                 AfterBackendlessDataGet(workListModels, response);
+
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
+                Log.d("SHAN","handleFault ="+fault.getMessage());
                 AfterBackendlessDataGet(workListModels, new ArrayList<Anomalies>());
 
-                fault.getMessage();
+
             }
         });
 
@@ -465,7 +470,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
             String twoDigitCode = workListModels.get(i).getFinalCode();
             String completeCode = workListModels.get(i).getCode();
-            Log.d("SHAN", "Two digit coed=" + twoDigitCode);
+
             StringBuilder builder = new StringBuilder();
 
             if (anomalies != null || anomalies.size() > 0) {
@@ -474,7 +479,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                     String segments[] = anomalies.get(j).getCode().split("-");
                     codeOne = segments[0];
                     codeTwo = segments[1];
-
+                    Log.d("SHAN","AfterBackendlessDataGet ="+anomalies.get(j).getBillboard()+"    code"+anomalies.get(j).getCode());
                     // if (twoDigitCode.equals(codeOne + "-" + codeTwo)) {
                     if (completeCode.equals(anomalies.get(j).getCode())) {
                         if (anomalies.get(j).getIsActive() == 1) {
@@ -483,6 +488,9 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                             }
                             if (anomalies.get(j).getElectricAnomaly() != null) {
                                 builder.append(anomalies.get(j).getElectricAnomaly() + ",");
+                            }
+                            if (anomalies.get(j).getBillboard() != null) {
+                                builder.append(anomalies.get(j).getBillboard() + ",");
                             }
                         }
 

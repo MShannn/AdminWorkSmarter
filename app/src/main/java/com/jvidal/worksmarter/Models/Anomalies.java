@@ -10,6 +10,16 @@ public class Anomalies {
     public String electricAnomaly;
     public String objectId;
     public Date created;
+    public String billboard;
+
+    public String getBillboard() {
+        return billboard;
+    }
+
+    public void setBillboard(String billboard) {
+        this.billboard = billboard;
+    }
+
     public Date updated;
     int isActive;
 

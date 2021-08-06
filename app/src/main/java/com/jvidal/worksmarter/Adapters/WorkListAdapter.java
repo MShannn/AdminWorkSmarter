@@ -168,7 +168,13 @@ public class WorkListAdapter extends RecyclerView.Adapter<WorkListAdapter.MyView
                 ((Activity) conn).startActivity(new Intent(conn, AddAnomaliesActivity.class));
             }
         });
-
+        holder.txt_billboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataSaveinCache("Client3", ContactList.get(position).getClient_three(), ContactList.get(position), position, "", "Billboard", ContactList.get(position).getTypeOfStructure());
+                ((Activity) conn).startActivity(new Intent(conn, AddAnomaliesActivity.class));
+            }
+        });
         holder.txt_problem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -318,8 +324,8 @@ public class WorkListAdapter extends RecyclerView.Adapter<WorkListAdapter.MyView
         File myDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "WorkSmarterPictures");
         if (!myDirectory.exists()) {
             myDirectory.mkdir();
-            Toast.makeText(conn, "Directorty created", Toast.LENGTH_SHORT).show();
-        } else Toast.makeText(conn, "D already", Toast.LENGTH_SHORT).show();
+        //    Toast.makeText(conn, "Directorty created", Toast.LENGTH_SHORT).show();
+        }// else //Toast.makeText(conn, "D already", Toast.LENGTH_SHORT).show();
         return myDirectory;
     }
 
@@ -333,6 +339,7 @@ public class WorkListAdapter extends RecyclerView.Adapter<WorkListAdapter.MyView
         public TextView txt_client_three;
         public TextView txt_electric;
         public TextView txt_civil;
+        public TextView txt_billboard;
         public TextView txt_problem;
 
 
@@ -347,6 +354,7 @@ public class WorkListAdapter extends RecyclerView.Adapter<WorkListAdapter.MyView
             txt_client_three = view.findViewById(R.id.txt_client_three);
             txt_electric = view.findViewById(R.id.txt_electric);
             txt_civil = view.findViewById(R.id.txt_civil);
+            txt_billboard = view.findViewById(R.id.txt_bilboard);
             txt_problem = view.findViewById(R.id.txt_problem);
 
 

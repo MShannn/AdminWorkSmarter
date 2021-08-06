@@ -121,6 +121,8 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
         setContentView(R.layout.activity_add_anomalies2);
         realm = Realm.getDefaultInstance();
         initViews();
+
+
         getDataFromCache();
         setValuesInViews();
 
@@ -218,6 +220,7 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabLayout.addTab(tabLayout.newTab().setText("Civil Anomalies"));
         tabLayout.addTab(tabLayout.newTab().setText("Electric Anomalies"));
+        tabLayout.addTab(tabLayout.newTab().setText("Billboard Anomalies"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -294,14 +297,13 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
             structureType = "BILLBOARDS";
         }
 
-
+       // Toast.makeText(getApplicationContext(), structureType, Toast.LENGTH_SHORT).show();
         if (check.equals("Civil")) {
 
             civilORelectric = 1;
 
 
-            typesOFProblemDatabase = realm.where(TypesOFProblemDatabase.class).equalTo("anomalyType", "Anomalía Civil"
-            ).equalTo("structureType", structureType).findAll();
+            typesOFProblemDatabase = realm.where(TypesOFProblemDatabase.class).equalTo("anomalyType", "Anomalía Civil").equalTo("structureType", structureType).findAll();
 
 
             for (int i = 0; i < typesOFProblemDatabase.size(); i++) {
@@ -330,6 +332,20 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
                 typeOfProblemsModel.setAnomalyType(typesOFProblemDatabase.get(i).getAnomalyType());
                 typeOfProblemsModel.setProblems(typesOFProblemDatabase.get(i).getProblems());
                 typeOfProblemsModel.setStructureType(typesOFProblemDatabase.get(i).getStructureType());
+                typeOfProblemsModelsList.add(typeOfProblemsModel);
+            }
+
+        } else if (check.equals("Billboard")) {
+            civilORelectric = 3;
+            String[] billboardArray = getResources().getStringArray(R.array.bilboar_anomalies);
+
+
+            for (int i = 0; i < billboardArray.length; i++) {
+
+                TypeOfProblemsModel typeOfProblemsModel = new TypeOfProblemsModel();
+                typeOfProblemsModel.setAnomalyType("Anomaly Billboard");
+                typeOfProblemsModel.setProblems(billboardArray[i]);
+                typeOfProblemsModel.setStructureType("Billboard");
                 typeOfProblemsModelsList.add(typeOfProblemsModel);
             }
 
@@ -547,6 +563,8 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
                     anomalieModel.setCivilAnomaly(selectedProblemFromList);
                 } else if (civilORelectric == 2) {
                     anomalieModel.setElectricAnomaly(selectedProblemFromList);
+                }else if(civilORelectric==3){
+                    anomalieModel.setBillboard(selectedProblemFromList);
                 }
                 anomalieModel.setObervation(obervationProblem);
                 anomalieModel.setIsActive(1);

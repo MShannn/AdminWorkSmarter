@@ -22,7 +22,6 @@ import com.jvidal.worksmarter.Models.ImagesURLModel;
 import com.jvidal.worksmarter.R;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -55,14 +54,12 @@ public class AnomaliesImagesFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         structureTwoDigitCode = getArguments().getString("towDigitCode");
         gridView = root.findViewById(R.id.gridview);
-
+        Log.d("SHAN", "In structure image" + structureTwoDigitCode);
         progress = (RelativeLayout) root.findViewById(R.id.progress_view);
         img_noRecord = (ImageView) root.findViewById(R.id.img_norecord);
         img_noRecord.setVisibility(View.GONE);
         //progress.setVisibility(View.VISIBLE);
         new TestAsync().execute();
-
-
 
 
         return root;
@@ -79,15 +76,16 @@ public class AnomaliesImagesFragment extends Fragment {
 
         protected String doInBackground(Void... arg0) {
 
-            Backendless.Files.listing("/Work Anomalies Photo", "*.png", true,
+            Backendless.Files.listing("/Work Anomalies Photo", structureTwoDigitCode + "*.png", true,
                     new AsyncCallback<List<FileInfo>>() {
                         @Override
                         public void handleResponse(List<FileInfo> response) {
-                            if(response.size()==0){
+                            if (response.size() == 0) {
                                 progress.setVisibility(View.GONE);
                                 img_noRecord.setVisibility(View.VISIBLE);
                             }
                             Iterator<FileInfo> filesIterator = response.iterator();
+                            Log.d("SHAN", " doInBackground= " + response.size());
                             while (filesIterator.hasNext()) {
                                 FileInfo file = filesIterator.next();
                                 String publicURL = file.getPublicUrl();
@@ -133,7 +131,6 @@ public class AnomaliesImagesFragment extends Fragment {
                     });
             return "You are at PostExecute";
         }
-
 
 
         protected void onPostExecute(String result) {

@@ -554,7 +554,7 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
                 FormulaEvaluator formulaEvaluatorAnomaly = workbook.getCreationHelper().createFormulaEvaluator();
 
 
-                Log.d("SHAN", "Second sheet" + rowsCountAnomaly);
+              //  Log.d("SHAN", "Second sheet" + rowsCountAnomaly);
                 for (int dataRow = 1; dataRow < rowsCountAnomaly; dataRow++) {
                     Row rowAnomaly = sheetAnomaly.getRow(dataRow);
                     int cellsCount = rowAnomaly.getPhysicalNumberOfCells();
@@ -570,8 +570,7 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
                         } else if (c == 2) {
                             problems = value;
                         }
-
-///                        Log.d("SHAN", "Second sheet" + rowsCountAnomaly + "   " + problems + "   " + structureType + "    " + anomalyType);
+                        Log.d("SHAN", "Second sheet" + rowsCountAnomaly + "   " + problems + "   " + structureType + "    " + anomalyType);
 
                     }
 
@@ -579,6 +578,8 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
                     realm.beginTransaction();
                     TypesOFProblemDatabase typesOFProblemDatabase = realm.createObject(TypesOFProblemDatabase.class);
                     typesOFProblemDatabase.setStructureType(structureType);
+
+                    Log.d("SHAN","Anomalies="+structureType+"    "+anomalyType+"       "+problems);
                     typesOFProblemDatabase.setAnomalyType(anomalyType);
                     typesOFProblemDatabase.setProblems(problems);
                     realm.commitTransaction();
