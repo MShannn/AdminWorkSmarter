@@ -3,10 +3,4 @@
     <external-path
         name="external_files"
         path="." />
-
-
-<!--
-    <external-files-path
-        name="my_images"
-        path="Pictures" />-->
 </paths>

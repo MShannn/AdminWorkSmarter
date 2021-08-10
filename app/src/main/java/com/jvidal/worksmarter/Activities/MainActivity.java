@@ -72,6 +72,7 @@ import com.jvidal.worksmarter.HelperMethods.Cache;
 import com.jvidal.worksmarter.Interfaces.MarkerClickListner;
 import com.jvidal.worksmarter.Models.Anomalies;
 import com.jvidal.worksmarter.Models.WorkListModel;
+import com.jvidal.worksmarter.PDFReport.PdfCreatorExampleActivity;
 import com.jvidal.worksmarter.R;
 import com.jvidal.worksmarter.RealmDatabase.ImagesURLDatabase;
 import com.jvidal.worksmarter.RealmDatabase.InformationDatabase;
@@ -202,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
         img_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PdfCreatorExampleActivity.class));
                 Toast.makeText(MainActivity.this, "In process", Toast.LENGTH_SHORT).show();
             }
         });
@@ -328,7 +330,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
     public void showDataFromDatabase(boolean update) {
         circularProgressView.setVisibility(View.VISIBLE);
-        Log.d("SHAN","showDataFromDatabase");
+        Log.d("SHAN", "showDataFromDatabase");
         setAddpter(workListModels, update);
         // circularProgressView.setVisibility(View.GONE);
     }
@@ -440,7 +442,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
     public void setAddpter(final ArrayList<WorkListModel> workListModels, boolean update) {
         circularProgressView.setVisibility(View.VISIBLE);
-        Log.d("SHAN","setAddpter");
+        Log.d("SHAN", "setAddpter");
 
 
         Backendless.Data.of(Anomalies.class).find(new AsyncCallback<List<Anomalies>>() {
@@ -454,7 +456,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
             @Override
             public void handleFault(BackendlessFault fault) {
-                Log.d("SHAN","handleFault ="+fault.getMessage());
+                Log.d("SHAN", "handleFault =" + fault.getMessage());
                 AfterBackendlessDataGet(workListModels, new ArrayList<Anomalies>());
 
 
@@ -479,7 +481,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                     String segments[] = anomalies.get(j).getCode().split("-");
                     codeOne = segments[0];
                     codeTwo = segments[1];
-                    Log.d("SHAN","AfterBackendlessDataGet ="+anomalies.get(j).getBillboard()+"    code"+anomalies.get(j).getCode());
+                    Log.d("SHAN", "AfterBackendlessDataGet =" + anomalies.get(j).getBillboard() + "    code" + anomalies.get(j).getCode());
                     // if (twoDigitCode.equals(codeOne + "-" + codeTwo)) {
                     if (completeCode.equals(anomalies.get(j).getCode())) {
                         if (anomalies.get(j).getIsActive() == 1) {

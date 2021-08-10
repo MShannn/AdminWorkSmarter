@@ -4,8 +4,18 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="parallax_image_height">320dp</dimen>
     <dimen name="parallax_image_height_ancor">360dp</dimen>
-
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
     <!-- Bottom control panel-->
     <dimen name="bottom_control_panel">220dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="pdf_width">595px</dimen>
+    <dimen name="pdf_height">842px</dimen>
+    <dimen name="pdf_margin_horizontal">20px</dimen>
+    <dimen name="pdf_margin_vertical">30px</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_normal">8dp</dimen>
 </resources>

@@ -36,6 +36,7 @@ import com.backendless.exceptions.BackendlessFault;
 import com.google.android.material.textfield.TextInputEditText;
 import com.jvidal.worksmarter.Adapters.CustomSpinnerAdapter;
 import com.jvidal.worksmarter.Models.InformationDatabaseModel;
+import com.jvidal.worksmarter.PDFReport.MainActivityPDF;
 import com.jvidal.worksmarter.R;
 import com.jvidal.worksmarter.RealmDatabase.InformationDatabase;
 import com.jvidal.worksmarter.RealmDatabase.TypesOFProblemDatabase;
@@ -111,6 +112,13 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
         edt_email = (EditText) findViewById(R.id.edt_email);
         progressView.setVisibility(View.GONE);
 
+
+        txtForgotPassowrd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivityPDF.class));
+            }
+        });
 
         databaseURL = getIntent().getStringExtra("databaseURL");
         databaseName = getIntent().getStringExtra("databaseName");
@@ -384,7 +392,7 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
 
     public File createFolder() {
         File myDirectory = new File(Environment.getExternalStorageDirectory(), "WorkSmaterDatabase");
-       // File myDirectory = new File(getApplicationContext().getFilesDir(), "WorkSmaterDatabase");
+        // File myDirectory = new File(getApplicationContext().getFilesDir(), "WorkSmaterDatabase");
         if (!myDirectory.exists()) {
             myDirectory.mkdir();
         }
@@ -554,7 +562,7 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
                 FormulaEvaluator formulaEvaluatorAnomaly = workbook.getCreationHelper().createFormulaEvaluator();
 
 
-              //  Log.d("SHAN", "Second sheet" + rowsCountAnomaly);
+                //  Log.d("SHAN", "Second sheet" + rowsCountAnomaly);
                 for (int dataRow = 1; dataRow < rowsCountAnomaly; dataRow++) {
                     Row rowAnomaly = sheetAnomaly.getRow(dataRow);
                     int cellsCount = rowAnomaly.getPhysicalNumberOfCells();
@@ -579,7 +587,7 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
                     TypesOFProblemDatabase typesOFProblemDatabase = realm.createObject(TypesOFProblemDatabase.class);
                     typesOFProblemDatabase.setStructureType(structureType);
 
-                    Log.d("SHAN","Anomalies="+structureType+"    "+anomalyType+"       "+problems);
+                    Log.d("SHAN", "Anomalies=" + structureType + "    " + anomalyType + "       " + problems);
                     typesOFProblemDatabase.setAnomalyType(anomalyType);
                     typesOFProblemDatabase.setProblems(problems);
                     realm.commitTransaction();

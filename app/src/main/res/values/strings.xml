@@ -7,6 +7,24 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
+    <string name="text_paragraph_example">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_print">Print</string>
+    <string name="text_share">Share</string>
+    <string name="text_generated_file_error">Generated File is null or does not exist!</string>
+    <string name="text_create_test_pdf">Create Test Pdf</string>
+    <string name="text_create_html_pdf">WS-PDF</string>
+    <string name="text_example">Example</string>
+    <string name="text_edit_html_pdf">Edit HTML Pdf</string>
+    <string name="app_icon_license">App Icon made by Freepik from www.flaticon.com</string>
+    <string name="pdf_icon_license">PDF Icon made by Google from www.flaticon.com</string>
+    <string name="text_create_pdf">Create PDF</string>
+    <string name="id">Stock ID</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="create_date">Create Date</string>
+
     <string-array name="bilboar_anomalies">
         <item>LAMP. QUEMADA ESP. PERMISO </item>
         <item>APAGADO ESP. PERMISO </item>
@@ -18,4 +36,11 @@
         <item>ENCENDIDA SIN IMPRESO </item>
 
     </string-array>
+
+    <string name="text_pdf_preview_not_support">PDF Preview Is not supported on below android Lolipop</string>
+    <string name="text_next">Next</string>
+    <string name="text_generating_pdf">Generating PDF</string>
+    <string name="text_next_page">Next Page</string>
+    <string name="text_previous_page">Previous Page</string>
+    <string name="pdf_page_as_image">pdf page as image</string>
 </resources>

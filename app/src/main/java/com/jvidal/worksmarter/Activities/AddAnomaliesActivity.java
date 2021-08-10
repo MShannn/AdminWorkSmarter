@@ -718,8 +718,11 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
+                        getApplicationContext()
+                                .getPackageName() + ".provider",
+                        photoFile);/*    Uri photoURI = FileProvider.getUriForFile(this,
                         "com.jvidal.worksmarter",
-                        photoFile);
+                        photoFile);*/
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, 569);
             }
