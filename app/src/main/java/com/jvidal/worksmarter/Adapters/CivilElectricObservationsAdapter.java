@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.backendless.Backendless;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.jvidal.worksmarter.HelperMethods.BusProvider;
 import com.jvidal.worksmarter.HelperMethods.Cache;
 import com.jvidal.worksmarter.Interfaces.AnomalyFixedListner;
 import com.jvidal.worksmarter.Models.Anomalies;

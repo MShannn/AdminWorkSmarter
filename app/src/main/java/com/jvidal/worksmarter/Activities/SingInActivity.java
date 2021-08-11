@@ -33,10 +33,11 @@ import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.backendless.persistence.DataQueryBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.jvidal.worksmarter.Adapters.CustomSpinnerAdapter;
+import com.jvidal.worksmarter.Models.Anomalies;
 import com.jvidal.worksmarter.Models.InformationDatabaseModel;
-import com.jvidal.worksmarter.PDFReport.MainActivityPDF;
 import com.jvidal.worksmarter.R;
 import com.jvidal.worksmarter.RealmDatabase.InformationDatabase;
 import com.jvidal.worksmarter.RealmDatabase.TypesOFProblemDatabase;
@@ -116,7 +117,7 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
         txtForgotPassowrd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainActivityPDF.class));
+                Toast.makeText(getApplicationContext(), "in process", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -151,9 +152,10 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(View v) {
 
+                Toast.makeText(getApplicationContext(), "in process", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(SingInActivity.this, SignupActivity.class);
-                startActivity(intent);
+                // Intent intent = new Intent(SingInActivity.this, SignupActivity.class);
+                // startActivity(intent);
             }
 
         });
@@ -201,9 +203,10 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
         spinner = (Spinner) findViewById(R.id.spinner);
 
 
-        CustomSpinnerAdapter customAdapter = new CustomSpinnerAdapter(SingInActivity.this, myList);
+        CustomSpinnerAdapter customAdapter = new CustomSpinnerAdapter(SingInActivity.this, myList, null, true);
         spinner.setAdapter(customAdapter);
         spinner.setOnItemSelectedListener(SingInActivity.this);
+
 
 
     }
@@ -529,8 +532,6 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
             //  realm.close();
 
 
-            Log.d("SHAN", "SIZE Loop" + informationDatabaseModels.size());
-
             new AnomaliesAsyncTaske().execute();
             //progressView.setVisibility(View.GONE);
         }
@@ -578,7 +579,7 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
                         } else if (c == 2) {
                             problems = value;
                         }
-                        Log.d("SHAN", "Second sheet" + rowsCountAnomaly + "   " + problems + "   " + structureType + "    " + anomalyType);
+                        //   Log.d("SHAN", "Second sheet" + rowsCountAnomaly + "   " + problems + "   " + structureType + "    " + anomalyType);
 
                     }
 
@@ -587,7 +588,7 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
                     TypesOFProblemDatabase typesOFProblemDatabase = realm.createObject(TypesOFProblemDatabase.class);
                     typesOFProblemDatabase.setStructureType(structureType);
 
-                    Log.d("SHAN", "Anomalies=" + structureType + "    " + anomalyType + "       " + problems);
+                    //  Log.d("SHAN", "Anomalies=" + structureType + "    " + anomalyType + "       " + problems);
                     typesOFProblemDatabase.setAnomalyType(anomalyType);
                     typesOFProblemDatabase.setProblems(problems);
                     realm.commitTransaction();

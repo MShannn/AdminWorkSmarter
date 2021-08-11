@@ -10,18 +10,20 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.STORAGE" />
 
-
     <application
         android:name=".WorkSmarteApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo_map"
         android:label="@string/app_name"
-
         android:roundIcon="@drawable/logo_map"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
+        <activity
+            android:name=".Activities.AnomaliesExportActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activities.SettingsActivity"
+            android:exported="true" />
         <activity
             android:name=".Activities.AllImagesActivity"
             android:screenOrientation="portrait" />
@@ -34,9 +36,10 @@
         <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait" />
-        <!--        <activity android:name=".PDFReport.activity.PDFCreatorActivity" />
-                <activity android:name=".PDFReport.activity.PDFViewerActivity" />-->
-
+        <!--
+        <activity android:name=".PDFReport.activity.PDFCreatorActivity" />
+                <activity android:name=".PDFReport.activity.PDFViewerActivity" />
+        -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
@@ -44,8 +47,8 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-        <!--   <provider
+        <!--
+   <provider
                android:name="androidx.core.content.FileProvider"
                android:authorities="com.jvidal.worksmarter"
                android:exported="false"
@@ -54,8 +57,8 @@
                    android:name="android.support.FILE_PROVIDER_PATHS"
                    android:resource="@xml/path"
                    tools:replace="android:resource" />
-           </provider>-->
-
+           </provider>
+        -->
         <activity
             android:name=".Activities.SingInActivity"
             android:screenOrientation="portrait" />
@@ -71,8 +74,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".PDFReport.MainActivityPDF" />
         <activity
             android:name=".PDFReport.PdfCreatorExampleActivity"
             android:theme="@style/AppTheme.TransparentStatusBar" />
@@ -82,32 +83,18 @@
             android:theme="@style/AppTheme.TransparentStatusBar" />
         <activity
             android:name=".PDFReport.activity.PDFViewerActivity"
-            android:theme="@style/AppTheme.TransparentStatusBar"
-
-            />
+            android:theme="@style/AppTheme.TransparentStatusBar" />
         <activity android:name=".PDFReport.activity.PDFCreatorActivity" />
-          <provider
-              android:name="androidx.core.content.FileProvider"
-              android:authorities="${applicationId}.provider"
-              android:exported="false"
-              android:grantUriPermissions="true">
-              <meta-data
-                  android:name="android.support.FILE_PROVIDER_PATHS"
-                  android:resource="@xml/path" />
-          </provider>
 
-
-   <!--     <provider
+        <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.jvidal.worksmarter"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/path" />
         </provider>
--->
-
     </application>
 
 </manifest>

@@ -72,7 +72,6 @@ import com.jvidal.worksmarter.HelperMethods.Cache;
 import com.jvidal.worksmarter.Interfaces.MarkerClickListner;
 import com.jvidal.worksmarter.Models.Anomalies;
 import com.jvidal.worksmarter.Models.WorkListModel;
-import com.jvidal.worksmarter.PDFReport.PdfCreatorExampleActivity;
 import com.jvidal.worksmarter.R;
 import com.jvidal.worksmarter.RealmDatabase.ImagesURLDatabase;
 import com.jvidal.worksmarter.RealmDatabase.InformationDatabase;
@@ -203,8 +202,8 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
         img_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), PdfCreatorExampleActivity.class));
-                Toast.makeText(MainActivity.this, "In process", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right );
             }
         });
 
@@ -349,8 +348,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                     double numericValue = cellValue.getNumberValue();
                     if (HSSFDateUtil.isCellDateFormatted(cell)) {
                         double date = cellValue.getNumberValue();
-                        SimpleDateFormat formatter =
-                                new SimpleDateFormat("dd/MM/yy");
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
                         value = formatter.format(HSSFDateUtil.getJavaDate(date));
                     } else {
                         value = "" + numericValue;
@@ -449,7 +447,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
             @Override
             public void handleResponse(List<Anomalies> response) {
 
-                //Log.d("SHAN","handleResponse="+response.);
+                Log.d("SHAN","handleResponse Main class="+response.size());
                 AfterBackendlessDataGet(workListModels, response);
 
             }
@@ -481,7 +479,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                     String segments[] = anomalies.get(j).getCode().split("-");
                     codeOne = segments[0];
                     codeTwo = segments[1];
-                    Log.d("SHAN", "AfterBackendlessDataGet =" + anomalies.get(j).getBillboard() + "    code" + anomalies.get(j).getCode());
+                //    Log.d("SHAN", "AfterBackendlessDataGet =" + anomalies.get(j).getBillboard() + "    code" + anomalies.get(j).getCode());
                     // if (twoDigitCode.equals(codeOne + "-" + codeTwo)) {
                     if (completeCode.equals(anomalies.get(j).getCode())) {
                         if (anomalies.get(j).getIsActive() == 1) {
@@ -733,7 +731,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                     new UploadCallback() {
                         @Override
                         public void onProgressUpdate(Integer progress) {
-                            Log.d("SHAN", "" + progress);
+                          //  Log.d("SHAN", "" + progress);
                         }
                     }, new AsyncCallback<BackendlessFile>() {
                         @Override
@@ -744,12 +742,12 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            Log.d("SHAN", response.getFileURL());
+                       //     Log.d("SHAN", response.getFileURL());
                         }
 
                         @Override
                         public void handleFault(BackendlessFault fault) {
-                            Log.d("SHAN", fault.getMessage());
+                      //      Log.d("SHAN", fault.getMessage());
 
                         }
                     });

@@ -1,7 +1,6 @@
 package com.jvidal.worksmarter.Fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +16,10 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
 import com.jvidal.worksmarter.Adapters.CivilElectricObservationsAdapter;
-import com.jvidal.worksmarter.HelperMethods.BusProvider;
 import com.jvidal.worksmarter.HelperMethods.Cache;
 import com.jvidal.worksmarter.Interfaces.AnomalyFixedListner;
 import com.jvidal.worksmarter.Models.Anomalies;
 import com.jvidal.worksmarter.R;
-import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;

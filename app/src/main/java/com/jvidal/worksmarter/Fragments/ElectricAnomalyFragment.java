@@ -16,7 +16,6 @@ import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
 import com.backendless.persistence.DataQueryBuilder;
 import com.jvidal.worksmarter.Adapters.CivilElectricObservationsAdapter;
-import com.jvidal.worksmarter.HelperMethods.BusProvider;
 import com.jvidal.worksmarter.HelperMethods.Cache;
 import com.jvidal.worksmarter.Interfaces.AnomalyFixedListner;
 import com.jvidal.worksmarter.Models.Anomalies;
