@@ -1,12 +1,9 @@
 package com.jvidal.worksmarter.Activities;
 
-import static com.backendless.rt.RTTypes.log;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
@@ -21,20 +18,6 @@ import com.backendless.exceptions.BackendlessFault;
 import com.backendless.files.FileInfo;
 import com.jvidal.worksmarter.R;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRichTextString;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -61,10 +44,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
-//        startActivity(new Intent(this, MainActivity.class));
-
-
         if (checkPermissions()) {
             listAllBackendlessFiles();
             listDatabaseFileBackendless();
@@ -72,23 +51,8 @@ public class SplashActivity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "Permission needed", Toast.LENGTH_SHORT).show();
         }
-/*
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (Environment.isExternalStorageManager()) {
-                listAllBackendlessFiles();
-                listDatabaseFileBackendless();
-            } else {
-                //request for the permission
-                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
-                Uri uri = Uri.fromParts("package", getPackageName(), null);
-                intent.setData(uri);
-                startActivity(intent);
-            }
-        }*/
         arrayList.add(0, "Select work list");
         url.add(0, "dumy");
-
-
 
 
     }
@@ -184,10 +148,6 @@ public class SplashActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (requestCode == 100) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                Log.d("SHAN", "Internet all splash");
-
-
                 listAllBackendlessFiles();
                 listDatabaseFileBackendless();
             }
