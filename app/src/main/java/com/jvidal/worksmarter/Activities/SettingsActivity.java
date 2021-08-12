@@ -33,12 +33,14 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),AnomaliesExportActivity.class));
+                overridePendingTransition(R.anim.push_up_in,R.anim.push_down_out );
             }
         });
         binding.cardGenerateStructuresReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), PdfCreatorExampleActivity.class));
+
             }
         });
     }

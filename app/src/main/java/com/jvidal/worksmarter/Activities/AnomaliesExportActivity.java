@@ -21,15 +21,12 @@ import com.jvidal.worksmarter.Models.Anomalies;
 import com.jvidal.worksmarter.R;
 import com.jvidal.worksmarter.databinding.ActivityAnomaliesExportBinding;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -52,6 +49,15 @@ public class AnomaliesExportActivity extends AppCompatActivity implements Adapte
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.imgNorecord.setVisibility(View.GONE);
         binding.progressView.setVisibility(View.VISIBLE);
+
+        binding.imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(R.anim.push_up_in,R.anim.push_down_out );
+            }
+        });
+
         Backendless.Data.of("Anomalies").getObjectCount(new AsyncCallback<Integer>() {
             @Override
             public void handleResponse(Integer integer) {
@@ -101,7 +107,7 @@ public class AnomaliesExportActivity extends AppCompatActivity implements Adapte
         binding.imgSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Size=" + anomaliesArrayList.size(), Toast.LENGTH_SHORT).show();
+                binding.progressView.setVisibility(View.VISIBLE);
                 createExcelSheet();
 
             }
@@ -136,68 +142,77 @@ public class AnomaliesExportActivity extends AppCompatActivity implements Adapte
     }
 
     public void createExcelSheet() {
-        XSSFWorkbook workBook = new XSSFWorkbook();
-        XSSFSheet sheet = workBook.createSheet("sheet1");
-        XSSFRow row = sheet.createRow(0);
-        XSSFCell cell = row.createCell(0);
-        cell.setCellValue("Code");
 
 
-/*
-        for (int j = 0; j < anomaliesArrayList.size(); j++) {
-            XSSFRow row = sheet.createRow(j);
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet firstSheet = workbook.createSheet("Anomalies");
+        HSSFRow rowA = firstSheet.createRow(0);
+        // HSSFCell cellA = rowA.createCell(0);
+        //cellA.setCellValue(new HSSFRichTextString("Sheet One"));
+        FileOutputStream fos = null;
+
+
+        for (int j = 0; j < anomaliesArrayList.size() + 1; j++) {
+            HSSFRow row = firstSheet.createRow(j);
 
 
             if (j == 0) {
-                XSSFCell cell = row.createCell(0);
+                HSSFCell cell = row.createCell(0);
                 cell.setCellValue("Code");
-                XSSFCell cell1 = row.createCell(1);
+                HSSFCell cell1 = row.createCell(1);
                 cell1.setCellValue("Civil Anomaly");
-                XSSFCell cel2 = row.createCell(2);
+                HSSFCell cel2 = row.createCell(2);
                 cel2.setCellValue("Electric Anomaly");
-                XSSFCell cell3 = row.createCell(3);
+                HSSFCell cell3 = row.createCell(3);
                 cell3.setCellValue("Billboard Anomaly");
-                XSSFCell cell4 = row.createCell(4);
+                HSSFCell cell4 = row.createCell(4);
                 cell4.setCellValue("Observation");
-                XSSFCell cell5 = row.createCell(5);
+                HSSFCell cell5 = row.createCell(5);
                 cell5.setCellValue("isActive");
             } else {
-                XSSFCell cell = row.createCell(0);
-                cell.setCellValue(anomaliesArrayList.get(j).getCode());
-                XSSFCell cell1 = row.createCell(1);
-                cell1.setCellValue(anomaliesArrayList.get(j).getCivilAnomaly());
-                XSSFCell cel2 = row.createCell(2);
-                cel2.setCellValue(anomaliesArrayList.get(j).getElectricAnomaly());
-                XSSFCell cell3 = row.createCell(3);
-                cell3.setCellValue(anomaliesArrayList.get(j).getBillboard());
-                XSSFCell cell4 = row.createCell(4);
-                cell4.setCellValue(anomaliesArrayList.get(j).getObervation());
-                XSSFCell cell5 = row.createCell(5);
-                cell5.setCellValue(anomaliesArrayList.get(j).getIsActive() + "");
+                HSSFCell cell = row.createCell(0);
+                cell.setCellValue(anomaliesArrayList.get(j - 1).getCode());
+                HSSFCell cell1 = row.createCell(1);
+                cell1.setCellValue(anomaliesArrayList.get(j - 1).getCivilAnomaly());
+                HSSFCell cel2 = row.createCell(2);
+                cel2.setCellValue(anomaliesArrayList.get(j - 1).getElectricAnomaly());
+                HSSFCell cell3 = row.createCell(3);
+                cell3.setCellValue(anomaliesArrayList.get(j - 1).getBillboard());
+                HSSFCell cell4 = row.createCell(4);
+                cell4.setCellValue(anomaliesArrayList.get(j - 1).getObervation());
+                HSSFCell cell5 = row.createCell(5);
+                cell5.setCellValue(anomaliesArrayList.get(j - 1).getIsActive() + "");
 
             }
 
 
-        }*/
+        }
 
 
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         String formattedDate = df.format(c.getTime());
 
 
-        File fileUpdated = new File(createFolder(), "Anomalies.xlsx");
-
-        FileOutputStream out = null;
         try {
-            out = new FileOutputStream(fileUpdated);
-            workBook.write(out);
-            out.close();
-            Toast.makeText(getApplicationContext(), "File has been saved " + fileUpdated.getPath(), Toast.LENGTH_SHORT).show();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+
+            File file;
+            file = new File(createFolder(), "Anomalies" + formattedDate + ".xls");
+            fos = new FileOutputStream(file);
+            workbook.write(fos);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.flush();
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                binding.progressView.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(), "File has been saved in WorkSmarterAnomalies folder", Toast.LENGTH_LONG).show();
+            }
         }
 
     }
