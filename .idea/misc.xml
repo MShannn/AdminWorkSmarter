@@ -21,22 +21,32 @@
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_add_anomalies2.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_all_images.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_anomalies_export.xml" value="0.5" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_display_image.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_main_pdf.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_pdf_editor.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_pdf_viewer.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_pdfcreator.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_settings.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_sing_in.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/anomalies_images_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/billboard_anomaly_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/bottom_sheet.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/civil_anomaly_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/content_fix_anomaly.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/dialog_image_shoot.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/dialog_image_video.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/electric_anomaly_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/gps_dialog.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/item_pdf_page.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/item_pdf_viewer.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/list_anomalies_exported.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/list_civil_electric_observations.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/marker_view.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/spinnet_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/structure_images_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/layout/wrok_list_row.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/menu/menu_pdf_editor.xml" value="0.36666666666666664" />
         <entry key="..\:/ShanPractices/Work Smart/Admin/app/src/main/res/menu/menu_pdf_viewer.xml" value="0.36666666666666664" />

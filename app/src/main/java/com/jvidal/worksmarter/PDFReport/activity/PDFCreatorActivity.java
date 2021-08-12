@@ -133,12 +133,7 @@ public abstract class PDFCreatorActivity extends AppCompatActivity implements Vi
         });
     }
 
-    /**
-     * Creates a paginated PDF page views from list of views those are already rendered on screen
-     * (Only rendered views can give height)
-     *
-     * @param tempViewList list of views to create pdf views from, view should be already rendered to screen
-     */
+
     private void createPDFFromViewList(final View headerView, final View footerView, @NonNull final ArrayList<View> tempViewList, @NonNull final String filename, final PDFUtil.PDFUtilListener pdfUtilListener) {
         tempViewList.get(tempViewList.size() - 1).post(new Runnable() {
             @Override
@@ -318,37 +313,14 @@ public abstract class PDFCreatorActivity extends AppCompatActivity implements Vi
         }
     }
 
-    /**
-     * Get header per page, starts with page: 0
-     * MAKE SURE HEIGHT OF EVERY HEADER IS SAME FOR EVERY PAGE
-     *
-     * @param forPage page number
-     * @return View for header
-     */
+
     protected abstract PDFHeaderView getHeaderView(int forPage);
 
-    /**
-     * Content that has to be paginated
-     *
-     * @return PDFBody, which is a List of Views
-     */
+
     protected abstract PDFBody getBodyViews();
 
-    /**
-     * Get header per page, starts with page: 0
-     * MAKE SURE HEIGHT OF EVERY FOOTER IS SAME FOR EVERY PAGE
-     *
-     * @param forPage page number
-     * @return View for header
-     */
     protected abstract PDFFooterView getFooterView(int forPage);
 
-    /**
-     * Can add watermark images to per page, starts with page: 0
-     *
-     * @param forPage page number
-     * @return PDFImageView or null
-     */
     @Nullable
     protected PDFImageView getWatermarkView(int forPage) {
         return null;

@@ -27,10 +27,6 @@ import java.util.List;
 
 public class PDFUtil {
 
-
-    /**
-     * TAG.
-     */
     private static final String TAG = PDFUtil.class.getName();
     /**
      * Page width for our PDF.
@@ -122,19 +118,6 @@ public class PDFUtil {
         return bitmaps;
     }
 
-    /**
-     * Generates PDF for the given content views to the file path specified.
-     * <p/>
-     * Method gets List of views as the input and each view will be written to the single page in
-     * the PDF.
-     * <p/>
-     * If API is not support then PDFUtilListener's  pdfGenerationFailure method will be called with
-     * APINotSupportedException.
-     *
-     * @param contentViews List of Content Views to be converted as PDF.
-     * @param filePath     FilePath where the PDF has to be stored.
-     * @param listener     PDFUtilListener to send callback for PDF generation.
-     */
     public final void generatePDF(final List<View> contentViews, final String filePath,
                                   final PDFUtilListener listener) {
         // Check Api Version.

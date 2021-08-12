@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right );
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
             }
         });
 
@@ -247,13 +247,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
     private void getLastLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         mFusedLocationClient.getLastLocation()
@@ -280,13 +273,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                 });
     }
 
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_homee_drawer, menu);
-        return true;
-    }
-*/
 
     public boolean checkFileExist(String workListFile) {
         File file = new File(createFolder(), workListFile);
@@ -329,7 +315,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
     public void showDataFromDatabase(boolean update) {
         circularProgressView.setVisibility(View.VISIBLE);
-        Log.d("SHAN", "showDataFromDatabase");
         setAddpter(workListModels, update);
         // circularProgressView.setVisibility(View.GONE);
     }
@@ -360,8 +345,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                 default:
             }
         } catch (NullPointerException e) {
-            /* proper error handling should be here */
-//            Log.d("SHAN", "exceptio bn" + e.getMessage());
+            e.printStackTrace();
         }
         return value;
     }
@@ -440,21 +424,17 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
     public void setAddpter(final ArrayList<WorkListModel> workListModels, boolean update) {
         circularProgressView.setVisibility(View.VISIBLE);
-        Log.d("SHAN", "setAddpter");
 
 
         Backendless.Data.of(Anomalies.class).find(new AsyncCallback<List<Anomalies>>() {
             @Override
             public void handleResponse(List<Anomalies> response) {
-
-                Log.d("SHAN","handleResponse Main class="+response.size());
                 AfterBackendlessDataGet(workListModels, response);
 
             }
 
             @Override
             public void handleFault(BackendlessFault fault) {
-                Log.d("SHAN", "handleFault =" + fault.getMessage());
                 AfterBackendlessDataGet(workListModels, new ArrayList<Anomalies>());
 
 
@@ -479,7 +459,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                     String segments[] = anomalies.get(j).getCode().split("-");
                     codeOne = segments[0];
                     codeTwo = segments[1];
-                //    Log.d("SHAN", "AfterBackendlessDataGet =" + anomalies.get(j).getBillboard() + "    code" + anomalies.get(j).getCode());
                     // if (twoDigitCode.equals(codeOne + "-" + codeTwo)) {
                     if (completeCode.equals(anomalies.get(j).getCode())) {
                         if (anomalies.get(j).getIsActive() == 1) {
@@ -561,8 +540,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
 
                             textView.setText(informationDatabase1.getAddress());
-                            //  problem.setText(informationDatabase1.getObervationProbe() + "," + informationDatabase1.getCivilProblem() + "," + informationDatabase1.getElectricProblem());
-
                         } catch (NullPointerException e) {
                             e.printStackTrace();
                         }
@@ -671,7 +648,9 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
 
 
-      /*  Backendless.Files.Android.upload(image,
+      /* upload image in PNG format
+
+      Backendless.Files.Android.upload(image,
                 Bitmap.CompressFormat.PNG,
                 100,
                 finalResult + " " + formattedDate + ".png",
@@ -731,7 +710,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                     new UploadCallback() {
                         @Override
                         public void onProgressUpdate(Integer progress) {
-                          //  Log.d("SHAN", "" + progress);
+                            //  Log.d("SHAN", "" + progress);
                         }
                     }, new AsyncCallback<BackendlessFile>() {
                         @Override
@@ -742,12 +721,12 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                       //     Log.d("SHAN", response.getFileURL());
+                            //     Log.d("SHAN", response.getFileURL());
                         }
 
                         @Override
                         public void handleFault(BackendlessFault fault) {
-                      //      Log.d("SHAN", fault.getMessage());
+                            //      Log.d("SHAN", fault.getMessage());
 
                         }
                     });
@@ -947,40 +926,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
         BitmapFactory.Options o2 = new BitmapFactory.Options();
         o2.inSampleSize = scale;
         Bitmap image = BitmapFactory.decodeFile(filePath, o2);
-/*
-        ExifInterface exif;
-        try {
-            exif = new ExifInterface(filePath);
-            int exifOrientation = exif.getAttributeInt(
-                    ExifInterface.TAG_ORIENTATION,
-                    ExifInterface.ORIENTATION_NORMAL);
-
-            int rotate = 90;
-         *//*   switch (exifOrientation) {
-                case ExifInterface.ORIENTATION_ROTATE_90:
-                    rotate = 90;
-                    break;
-
-                case ExifInterface.ORIENTATION_ROTATE_180:
-                    rotate = 180;
-                    break;
-
-                case ExifInterface.ORIENTATION_ROTATE_270:
-                    rotate = 270;
-                    break;
-            }*//*
-
-            if (rotate != 0) {
-                int w = image.getWidth();
-                int h = image.getHeight();
-                Matrix mtx = new Matrix();
-                mtx.preRotate(rotate);
-                image = Bitmap.createBitmap(image, 0, 0, w, h, mtx, true);
-
-            }
-        } catch (IOException e) {
-            return null;
-        }*/
         return image.copy(Bitmap.Config.ARGB_8888, true);
     }
 
@@ -998,7 +943,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
         imgSearchStructure = (ImageView) findViewById(R.id.img_search_structure);
         edtSearch = (EditText) findViewById(R.id.edt_search);
         llSearachStructure.setVisibility(View.GONE);
-
         edtSearch.addTextChangedListener(this);
 
 
@@ -1078,11 +1022,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, Mark
 
     }
 
-  /*  @Override
-    public void onResume() {
-        super.onResume();
-        BusProvider.getInstance().register(this);
-    }*/
 
     @Override
     protected void onDestroy() {

@@ -33,10 +33,8 @@ import com.backendless.Backendless;
 import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
-import com.backendless.persistence.DataQueryBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.jvidal.worksmarter.Adapters.CustomSpinnerAdapter;
-import com.jvidal.worksmarter.Models.Anomalies;
 import com.jvidal.worksmarter.Models.InformationDatabaseModel;
 import com.jvidal.worksmarter.R;
 import com.jvidal.worksmarter.RealmDatabase.InformationDatabase;
@@ -206,7 +204,6 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
         CustomSpinnerAdapter customAdapter = new CustomSpinnerAdapter(SingInActivity.this, myList, null, true);
         spinner.setAdapter(customAdapter);
         spinner.setOnItemSelectedListener(SingInActivity.this);
-
 
 
     }
@@ -488,11 +485,6 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
                     }
                 });
 
-               /* MUPI
-                PUENTE and Puente Led
-                For bridge
-                Vall is for billboard*/
-
 
                 Log.d("SHAN", "exception" + e.getMessage());
             }
@@ -501,7 +493,6 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
 
         protected void onProgressUpdate(Integer... a) {
             super.onProgressUpdate(a);
-            Log.d("SHAN" + " onProgressUpdate", "You are in progress update ... " + a[0]);
         }
 
         protected void onPostExecute(String result) {
@@ -529,11 +520,7 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
 
                 realm.commitTransaction();
             }
-            //  realm.close();
-
-
             new AnomaliesAsyncTaske().execute();
-            //progressView.setVisibility(View.GONE);
         }
     }
 
@@ -579,16 +566,12 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
                         } else if (c == 2) {
                             problems = value;
                         }
-                        //   Log.d("SHAN", "Second sheet" + rowsCountAnomaly + "   " + problems + "   " + structureType + "    " + anomalyType);
-
                     }
 
 
                     realm.beginTransaction();
                     TypesOFProblemDatabase typesOFProblemDatabase = realm.createObject(TypesOFProblemDatabase.class);
                     typesOFProblemDatabase.setStructureType(structureType);
-
-                    //  Log.d("SHAN", "Anomalies=" + structureType + "    " + anomalyType + "       " + problems);
                     typesOFProblemDatabase.setAnomalyType(anomalyType);
                     typesOFProblemDatabase.setProblems(problems);
                     realm.commitTransaction();
@@ -617,15 +600,12 @@ public class SingInActivity extends AppCompatActivity implements AdapterView.OnI
 
         protected void onProgressUpdate(Integer... a) {
             super.onProgressUpdate(a);
-            Log.d("SHAN" + " onProgressUpdate", "You are in progress update ... " + a[0]);
         }
 
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             ll_new_account.setClickable(true);
             btn_login.setClickable(true);
-
-
             progressView.setVisibility(View.GONE);
         }
     }

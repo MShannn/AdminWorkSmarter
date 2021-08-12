@@ -177,20 +177,10 @@ public class TouchImageViewFling extends AppCompatImageView {
         }
     }
 
-    /**
-     * Returns false if image is in initial, unzoomed state. False, otherwise.
-     *
-     * @return true if image is zoomed
-     */
     public boolean isZoomed() {
         return normalizedScale != 1;
     }
 
-    /**
-     * Return a Rect representing the zoomed image.
-     *
-     * @return rect representing zoomed image
-     */
     public RectF getZoomedRect() {
         if (mScaleType == ScaleType.FIT_XY) {
             throw new UnsupportedOperationException("getZoomedRect() not supported with FIT_XY");
@@ -268,97 +258,38 @@ public class TouchImageViewFling extends AppCompatImageView {
         super.onConfigurationChanged(newConfig);
         savePreviousImageValues();
     }
-
-    /**
-     * Get the max zoom multiplier.
-     *
-     * @return max zoom multiplier.
-     */
-    public float getMaxZoom() {
+   public float getMaxZoom() {
         return maxScale;
     }
-
-    /**
-     * Set the max zoom multiplier. Default value: 3.
-     *
-     * @param max max zoom multiplier.
-     */
     public void setMaxZoom(float max) {
         maxScale = max;
         superMaxScale = SUPER_MAX_MULTIPLIER * maxScale;
     }
 
-    /**
-     * Get the min zoom multiplier.
-     *
-     * @return min zoom multiplier.
-     */
     public float getMinZoom() {
         return minScale;
     }
-
-    /**
-     * Set the min zoom multiplier. Default value: 1.
-     *
-     * @param min min zoom multiplier.
-     */
     public void setMinZoom(float min) {
         minScale = min;
         superMinScale = SUPER_MIN_MULTIPLIER * minScale;
     }
 
-    /**
-     * Get the current zoom. This is the zoom relative to the initial
-     * scale, not the original resource.
-     *
-     * @return current zoom multiplier.
-     */
     public float getCurrentZoom() {
         return normalizedScale;
     }
-
-    /**
-     * Reset zoom and translation to initial state.
-     */
     public void resetZoom() {
         normalizedScale = 1;
         fitImageToView();
     }
 
-    /**
-     * Set zoom to the specified scale. Image will be centered by default.
-     *
-     * @param scale
-     */
     public void setZoom(float scale) {
         setZoom(scale, 0.5f, 0.5f);
     }
-
-    /**
-     * Set zoom to the specified scale. Image will be centered around the point
-     * (focusX, focusY). These floats range from 0 to 1 and denote the focus point
-     * as a fraction from the left and top of the view. For example, the top left
-     * corner of the image would be (0, 0). And the bottom right corner would be (1, 1).
-     *
-     * @param scale
-     * @param focusX
-     * @param focusY
-     */
     public void setZoom(float scale, float focusX, float focusY) {
         setZoom(scale, focusX, focusY, mScaleType);
     }
 
-    /**
-     * Set zoom to the specified scale. Image will be centered around the point
-     * (focusX, focusY). These floats range from 0 to 1 and denote the focus point
-     * as a fraction from the left and top of the view. For example, the top left
-     * corner of the image would be (0, 0). And the bottom right corner would be (1, 1).
-     *
-     * @param scale
-     * @param focusX
-     * @param focusY
-     * @param scaleType
-     */
+
     public void setZoom(float scale, float focusX, float focusY, ScaleType scaleType) {
         //
         // setZoom can be called before the image is on the screen, but at this point,

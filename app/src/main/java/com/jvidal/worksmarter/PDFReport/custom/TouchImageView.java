@@ -13,7 +13,6 @@ import android.view.View;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
-// https://gist.githubusercontent.com/myinnos/e14b750be9503a2b2611f5a5a74a9e6c
 public class TouchImageView extends AppCompatImageView implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
     // We can be in one of these 3 states
     static final int NONE = 0;

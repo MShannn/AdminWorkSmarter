@@ -42,16 +42,7 @@ public class FileManager {
         return instance;
     }
 
-    /**
-     * Write file from InputStream, file will be overwritten if exist
-     *
-     * @param context          context
-     * @param inputStream      input stream reader of data (file)
-     * @param fileName         name of file which has to saved
-     * @param overWriteIfExist if true, file will be overwritten if exist
-     * @return saved file
-     * @throws IOException
-     */
+
     public File saveFileToPrivateStorageFromInputStream(Context context, InputStream inputStream, String fileName, boolean overWriteIfExist, boolean createThumbnail) throws Exception, IOException {
         // Create file directory if not exist
         makeDirectoryInPrivateStorage(context, fileName.substring(0, fileName.indexOf("/")));

@@ -146,8 +146,6 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
                 }
 
 
-                // addPicListner();
-
             }
         });
 
@@ -297,7 +295,7 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
             structureType = "BILLBOARDS";
         }
 
-       // Toast.makeText(getApplicationContext(), structureType, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getApplicationContext(), structureType, Toast.LENGTH_SHORT).show();
         if (check.equals("Civil")) {
 
             civilORelectric = 1;
@@ -563,7 +561,7 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
                     anomalieModel.setCivilAnomaly(selectedProblemFromList);
                 } else if (civilORelectric == 2) {
                     anomalieModel.setElectricAnomaly(selectedProblemFromList);
-                }else if(civilORelectric==3){
+                } else if (civilORelectric == 3) {
                     anomalieModel.setBillboard(selectedProblemFromList);
                 }
                 anomalieModel.setObervation(obervationProblem);
@@ -631,26 +629,6 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
         o2.inSampleSize = scale;
         Bitmap image = BitmapFactory.decodeFile(filePath, o2);
 
-     /*   ExifInterface exif;
-        try {
-            exif = new ExifInterface(filePath);
-            int exifOrientation = exif.getAttributeInt(
-                    ExifInterface.TAG_ORIENTATION,
-                    ExifInterface.ORIENTATION_NORMAL);
-
-            int rotate = 90;
-
-            if (rotate != 0) {
-                int w = image.getWidth();
-                int h = image.getHeight();
-                Matrix mtx = new Matrix();
-                mtx.preRotate(rotate);
-                image = Bitmap.createBitmap(image, 0, 0, w, h, mtx, true);
-
-            }
-        } catch (IOException e) {
-            return null;
-        }*/
         return image.copy(Bitmap.Config.ARGB_8888, true);
     }
 
@@ -693,29 +671,20 @@ public class AddAnomaliesActivity extends AppCompatActivity implements AnomalyFi
     }
 
     private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        //String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(txtCode.getText().toString() + " " + formattedDate,  /* prefix */".png",         /* suffix */storageDir      /* directory */);
-
-        // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
         return image;
     }
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
             try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
-                // Error occurred while creating the File
 
             }
-            // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
                         getApplicationContext()
