@@ -41,6 +41,7 @@ public class AllImagesActivity extends AppCompatActivity {
 
         final ImagesStructureTabLayoutAdapter adapter = new ImagesStructureTabLayoutAdapter(AllImagesActivity.this, getSupportFragmentManager(), tabLayout.getTabCount(), structureIdTwoDigit);
         viewPager.setAdapter(adapter);
+
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
